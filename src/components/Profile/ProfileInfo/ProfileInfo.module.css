@@ -1,0 +1,14 @@
+.profileInfo {
+    color: white;
+}
+
+.img image{
+    width: 10px;
+    background: azure;
+    border-radius: 10px;
+
+}
+
+.description {
+padding: 10px;
+}
