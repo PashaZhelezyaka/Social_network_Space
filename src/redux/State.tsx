@@ -27,12 +27,33 @@ export type StoreType = {
     _state: StateType
     _callSubscriber: (_state: StateType) => void
     subscribe: (observer: (_state: StateType) => void) => void
-    addPostText: () => void
-    updateNewPostText: (newPostText: string)=> void
-    addMessageText: ()=> void
-    updateNewMessageText: (newMessageText: string)=> void
-    getState: ()=>StateType
+    /*addPostText: () => void
+    updateNewPostText: (newPostText: string) => void
+    addMessageText: () => void
+    updateNewMessageText: (newMessageText: string) => void*/
+    getState: () => StateType
+    dispatch: (action: ActionsTypes )=> void
 }
+export type AddPostTextActionType = {
+    type: "ADD-POST-TEXT"
+    updateNewPostText: string //(newPostText: string)=>void
+}
+export type UpdateNewPostTextActionType = {
+    type:"UP-DATE-NEW-POST-TEXT"
+    newPostText: string
+    }
+export type AddMessageTextActionType = {
+    type: "ADD-MESSAGE-TEXT"
+    updateNewMessageText: string //(newMessageText: string)=>void
+}
+export type UpdateNewMessageTextActionType = {
+    type:"UP-DATE-NEW-MESSAGE-TEXT"
+    newMessageText: string
+    }
+export type ActionsTypes =
+    AddPostTextActionType | UpdateNewPostTextActionType |
+    AddMessageTextActionType | UpdateNewMessageTextActionType
+
 
 let store: StoreType = {
     _state: {
@@ -76,37 +97,39 @@ let store: StoreType = {
     subscribe(observer: (_state: StateType) => void) {
         this._callSubscriber = observer
     },
-
-    addPostText() {
-        debugger
-        const newPost: PostDataType = {
-            id: 7,
-            message: this._state.postPage.newPostText,
-            likesCount: "like 0"
-        }
-        this._state.postPage.postData.push(newPost)
-        this.updateNewPostText('')
-        this._callSubscriber(this._state)
-    },
-    updateNewPostText(newPostText: string) {
-               this._state.postPage.newPostText = newPostText
-        this._callSubscriber(this._state)
-    },
-    addMessageText() {
-        const newMessage: MessageDataType = {
-            message: this._state.dialogPage.newMessageText
-        }
-        this._state.dialogPage.messageData.push(newMessage)
-        this.updateNewMessageText('')
-        this._callSubscriber(this._state)
-    },
-    updateNewMessageText(newMessageText: string) {
-        this._state.dialogPage.newMessageText = newMessageText
-        this._callSubscriber(this._state)
-    },
-    getState () {
+    getState() {
         return this._state
-    }
+    },
+
+    dispatch (action) {
+        if (action.type === "ADD-POST-TEXT") {
+            const newPost: PostDataType = {
+                id: 7,
+                message: this._state.postPage.newPostText,
+                likesCount: "like 0" }
+            this._state.postPage.postData.push(newPost)
+            action.updateNewPostText = ''
+            this._callSubscriber(this._state)
+        }
+        else if (action.type === "UP-DATE-NEW-POST-TEXT") {
+            this._state.postPage.newPostText = action.newPostText
+            this._callSubscriber(this._state)
+        }
+        else if (action.type === "ADD-MESSAGE-TEXT") {
+            const newMessage: MessageDataType = {
+                message: this._state.dialogPage.newMessageText
+            }
+            this._state.dialogPage.messageData.push(newMessage)
+            action.updateNewMessageText = ''
+            this._callSubscriber(this._state)
+        }
+        else if (action.type === "UP-DATE-NEW-MESSAGE-TEXT") {
+            this._state.dialogPage.newMessageText = action.newMessageText
+            this._callSubscriber(this._state)
+        }
+
+    },
+
 }
 
-    export default store;
+export default store;

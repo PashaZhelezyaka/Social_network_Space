@@ -1,13 +1,13 @@
 import m from "./MyPosts.module.css";
 import React, {ChangeEvent} from "react";
 import {Post} from "./Post/Post"
-import {PostDataType, PostPageType} from "../../../redux/State";
+import {ActionsTypes, PostDataType, PostPageType} from "../../../redux/State";
 
 type MyPostsPropsType = {
     state: PostPageType
-    addPostText: (newPostText: string) => void
-    updateNewPostText: (newPostText: string) => void
-
+    //addPostText: (newPostText: string) => void
+    //updateNewPostText: (newPostText: string) => void
+    dispatch: (action:ActionsTypes)=>void
 
 }
 
@@ -17,12 +17,13 @@ export function MyPosts(props: MyPostsPropsType) {
                                                        likesCount={p.likesCount}/>)
 
         let addPost = () => {
-        props.addPostText(props.state.newPostText);
+        props.dispatch({type: "ADD-POST-TEXT" ,updateNewPostText: props.state.newPostText})
+        //(props.state.newPostText);
 
 
     }
     const newChangeText = (e:ChangeEvent<HTMLTextAreaElement>) =>
-        props.updateNewPostText(e.currentTarget.value);
+        props.dispatch({type:"UP-DATE-NEW-POST-TEXT" , newPostText:(e.currentTarget.value)}) //(e.currentTarget.value);
 
 
 
