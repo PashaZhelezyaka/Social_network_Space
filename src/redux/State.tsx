@@ -136,5 +136,13 @@ export const addPostActionCreator = (postText: string): AddPostTextActionType =>
 export const upDateNewPostTextActionCreator = (text: string): UpdateNewPostTextActionType=> {
     return {type:"UP-DATE-NEW-POST-TEXT" , newPostText:text}
 }
+export const addMessageActionCreator = (messageText: string): AddMessageTextActionType=> {
+    return {type: "ADD-MESSAGE-TEXT",
+        updateNewMessageText: messageText }
+}
+export const upDateNewMessageTextActionCreator = (text: string): UpdateNewMessageTextActionType=> {
+    return {type: "UP-DATE-NEW-MESSAGE-TEXT",
+        newMessageText: text}
+}
 
 export default store;
