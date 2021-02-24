@@ -3,11 +3,11 @@ import React, {ChangeEvent} from "react";
 import {Post} from "./Post/Post"
 import {
     ActionsTypes,
-    addPostActionCreator,
     PostDataType,
     PostPageType,
-    upDateNewPostTextActionCreator
 } from "../../../redux/State";
+import {addPostActionCreator,
+    upDateNewPostTextActionCreator} from "../../../redux/Profile-reducer";
 
 type MyPostsPropsType = {
     state: PostPageType

@@ -4,10 +4,10 @@ import {Message} from "./Message/Message";
 import {DialogName} from "./DialogName/DialogName";
 import state, {
     ActionsTypes,
-    addMessageActionCreator,
     DialogPageType,
-    upDateNewMessageTextActionCreator
-} from "../../redux/State";
+    } from "../../redux/State";
+import {addMessageActionCreator,
+    upDateNewMessageTextActionCreator} from "../../redux/Dialog-reducer";
 
 type DialogPropsType ={
     state: DialogPageType
@@ -47,8 +47,9 @@ export function Dialog(props: DialogPropsType) {
             <div className={d.messages}>
                 {message}
             </div>
-            <button onClick={addMessage}>Add message</button>
-            <textarea onChange={newMessageChangeText} value={props.state.newMessageText}/>
+            <button onClick={addMessage}>send message</button>
+            <textarea placeholder={"Enter your message"}
+                      onChange={newMessageChangeText} value={props.state.newMessageText}/>
 
 
         </div>
