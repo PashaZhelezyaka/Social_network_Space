@@ -36,7 +36,7 @@ export type StoreType = {
 }
 export type AddPostTextActionType = {
     type: "ADD-POST-TEXT"
-    updateNewPostText: string //(newPostText: string)=>void
+    updateNewPostText: string
 }
 export type UpdateNewPostTextActionType = {
     type:"UP-DATE-NEW-POST-TEXT"
@@ -129,7 +129,12 @@ let store: StoreType = {
         }
 
     },
-
+    }
+export const addPostActionCreator = (postText: string): AddPostTextActionType => {
+    return {type: "ADD-POST-TEXT" ,updateNewPostText: postText}
+}
+export const upDateNewPostTextActionCreator = (text: string): UpdateNewPostTextActionType=> {
+    return {type:"UP-DATE-NEW-POST-TEXT" , newPostText:text}
 }
 
 export default store;
