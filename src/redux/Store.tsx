@@ -38,24 +38,24 @@ export type StoreType = {
     addMessageText: () => void
     updateNewMessageText: (newMessageText: string) => void*/
     getState: () => StateType
-    dispatch: (action: ActionsTypes )=> void
+    dispatch: (action: ActionsTypes) => void
 }
 export type AddPostTextActionType = {
     type: "ADD-POST-TEXT"
     updateNewPostText: string
 }
 export type UpdateNewPostTextActionType = {
-    type:"UP-DATE-NEW-POST-TEXT"
+    type: "UP-DATE-NEW-POST-TEXT"
     newPostText: string
-    }
+}
 export type AddMessageTextActionType = {
     type: "ADD-MESSAGE-TEXT"
     updateNewMessageText: string //(newMessageText: string)=>void
 }
 export type UpdateNewMessageTextActionType = {
-    type:"UP-DATE-NEW-MESSAGE-TEXT"
+    type: "UP-DATE-NEW-MESSAGE-TEXT"
     newMessageText: string
-    }
+}
 export type ActionsTypes =
     AddPostTextActionType | UpdateNewPostTextActionType |
     AddMessageTextActionType | UpdateNewMessageTextActionType
@@ -109,45 +109,44 @@ let store: StoreType = {
         return this._state
     },
 
-    dispatch (action) {
+    dispatch(action) {
 
-        this._state.postPage = profileReducer (this._state.postPage,action)
-        this._state.dialogPage = dialogReducer (this._state.dialogPage, action)
-        this._state.sidebar = sidebarReducer (this._state.sidebar, action)
+        this._state.postPage = profileReducer(this._state.postPage, action)
+        this._state.dialogPage = dialogReducer(this._state.dialogPage, action)
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action)
 
 
-       /* if (action.type === "ADD-POST-TEXT") {
-            const newPost: PostDataType = {
-                id: 7,
-                message: this._state.postPage.newPostText,
-                likesCount: "like 0" }
-            this._state.postPage.postData.push(newPost)
-            this._state.postPage.newPostText = " "
-            //action.updateNewPostText = ''
-            this._callSubscriber(this._state)
-        }
-        else if (action.type === "UP-DATE-NEW-POST-TEXT") {
-            this._state.postPage.newPostText = action.newPostText
-            this._callSubscriber(this._state)
-        }
-        else if (action.type === "ADD-MESSAGE-TEXT") {
-            const newMessage: MessageDataType = {
-                message: this._state.dialogPage.newMessageText
-            }
-            this._state.dialogPage.messageData.push(newMessage)
-            //action.updateNewMessageText = ''
-            this._state.dialogPage.newMessageText = ""
-            this._callSubscriber(this._state)
-        }
-        else if (action.type === "UP-DATE-NEW-MESSAGE-TEXT") {
-            this._state.dialogPage.newMessageText = action.newMessageText
-            this._callSubscriber(this._state)
-        }*/
+        /* if (action.type === "ADD-POST-TEXT") {
+             const newPost: PostDataType = {
+                 id: 7,
+                 message: this._state.postPage.newPostText,
+                 likesCount: "like 0" }
+             this._state.postPage.postData.push(newPost)
+             this._state.postPage.newPostText = " "
+             //action.updateNewPostText = ''
+             this._callSubscriber(this._state)
+         }
+         else if (action.type === "UP-DATE-NEW-POST-TEXT") {
+             this._state.postPage.newPostText = action.newPostText
+             this._callSubscriber(this._state)
+         }
+         else if (action.type === "ADD-MESSAGE-TEXT") {
+             const newMessage: MessageDataType = {
+                 message: this._state.dialogPage.newMessageText
+             }
+             this._state.dialogPage.messageData.push(newMessage)
+             //action.updateNewMessageText = ''
+             this._state.dialogPage.newMessageText = ""
+             this._callSubscriber(this._state)
+         }
+         else if (action.type === "UP-DATE-NEW-MESSAGE-TEXT") {
+             this._state.dialogPage.newMessageText = action.newMessageText
+             this._callSubscriber(this._state)
+         }*/
         this._callSubscriber(this._state)
     },
 
-    }
-
+}
 
 
 export default store;

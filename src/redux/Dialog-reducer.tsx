@@ -5,9 +5,29 @@ import {
     MessageDataType,
     StateType,
     UpdateNewMessageTextActionType
-} from "./State";
+} from "./Store";
 
-const dialogReducer = (state: DialogPageType, action: ActionsTypes) => {
+let initialState : DialogPageType = {
+    dialogNames: [
+        {id: 1, name: "Korolyov"},
+        {id: 2, name: "Belka & Strelka"},
+        {id: 3, name: "Yuri"},
+        {id: 4, name: "Iloha"},
+        {id: 5, name: "Mars"},
+        {id: 6, name: "Neznaika"},
+    ]
+    ,
+    messageData: [
+        {message: "go to space, i created"},
+        {message: "we will definitely be back?"},
+        {message: "how are you descendants?"},
+        {message: "Yura, we have lost everything"},
+        {message: "I'm just a chocolate bar"},
+        {message: "I do not know anything"},
+    ],
+    newMessageText: " ",
+}
+const dialogReducer = (state = initialState /*: DialogPageType*/, action: ActionsTypes) => {
 
     switch (action.type) {
         case "ADD-MESSAGE-TEXT": {

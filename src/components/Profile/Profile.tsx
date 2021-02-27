@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Profile.module.css'
 import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
-import {ActionsTypes, PostPageType} from "../../redux/State";
+import {ActionsTypes, PostPageType} from "../../redux/Store";
 type ProfilePropsType={
     state:PostPageType
     //addPostText: (newPostMessage: string) => void

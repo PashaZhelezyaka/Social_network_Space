@@ -5,7 +5,7 @@ import {DialogName} from "./DialogName/DialogName";
 import state, {
     ActionsTypes,
     DialogPageType,
-    } from "../../redux/State";
+    } from "../../redux/Store";
 import {addMessageActionCreator,
     upDateNewMessageTextActionCreator} from "../../redux/Dialog-reducer";
 

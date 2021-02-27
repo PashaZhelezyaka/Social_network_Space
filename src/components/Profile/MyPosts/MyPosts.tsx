@@ -5,7 +5,7 @@ import {
     ActionsTypes,
     PostDataType,
     PostPageType,
-} from "../../../redux/State";
+} from "../../../redux/Store";
 import {addPostActionCreator,
     upDateNewPostTextActionCreator} from "../../../redux/Profile-reducer";
 

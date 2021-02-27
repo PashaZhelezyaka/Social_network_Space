@@ -15,7 +15,7 @@ import {
     StateType,
     UpdateNewMessageTextActionType,
     UpdateNewPostTextActionType
-} from "./redux/State";
+} from "./redux/Store";
 
 type StateAppType={
     state: StateType
