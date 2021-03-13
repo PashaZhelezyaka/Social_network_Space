@@ -1,6 +1,7 @@
 import profileReducer from "./Profile-reducer";
 import dialogReducer from "./Dialog-reducer";
 import sidebarReducer from "./Sidebar-reducer";
+import {UserType} from "./Users-reducer";
 
 export type StateType = {
     dialogPage: DialogPageType
@@ -13,25 +14,25 @@ export type PostDataType = {
     message: string
     likesCount: string
 }
-export type MessageDataType = {
+ type MessageDataType = {
     message: string
 }
-export type DialogNamesType = {
+ type DialogNamesType = {
     id: number
     name: string
 }
-export type DialogPageType = {
+ type DialogPageType = {
     dialogNames: Array<DialogNamesType>
     messageData: Array<MessageDataType>
     newMessageText: string
 }
 export type PostPageType = {
-    postData: Array<PostDataType>
+    posts: Array<PostDataType>
     newPostText: string
 }
 export type StoreType = {
     _state: StateType
-    _callSubscriber: (_state: StateType) => void
+    _callSubscriber: (state: StateType) => void
     subscribe: (observer: (_state: StateType) => void) => void
     /*addPostText: () => void
     updateNewPostText: (newPostText: string) => void
@@ -56,9 +57,28 @@ export type UpdateNewMessageTextActionType = {
     type: "UP-DATE-NEW-MESSAGE-TEXT"
     newMessageText: string
 }
+export type FollowActionType = {
+    type: "FOLLOW"
+    userID: number
+}
+export type UnfollowActionType = {
+    type: "UNFOLLOW"
+    userID: number
+}
+export type SetUserActionType = {
+    type: "SET-USERS"
+    users: Array<UserType>
+}
+
 export type ActionsTypes =
-    AddPostTextActionType | UpdateNewPostTextActionType |
-    AddMessageTextActionType | UpdateNewMessageTextActionType
+    AddPostTextActionType
+    | UpdateNewPostTextActionType
+    | AddMessageTextActionType
+    | UpdateNewMessageTextActionType
+    | FollowActionType
+    | UnfollowActionType
+    | SetUserActionType
+
 
 
 let store: StoreType = {
@@ -85,7 +105,7 @@ let store: StoreType = {
         },
 
         postPage: {
-            postData: [
+            posts: [
                 {id: 1, message: "Hallo", likesCount: "like 15"},
                 {id: 2, message: "Yo space", likesCount: "like 20"},
                 {id: 3, message: "You are infinity?", likesCount: "like 15"},
@@ -111,9 +131,9 @@ let store: StoreType = {
 
     dispatch(action) {
 
-        this._state.postPage = profileReducer(this._state.postPage, action)
+        /*this._state.postPage = profileReducer(this._state.postPage, action)
         this._state.dialogPage = dialogReducer(this._state.dialogPage, action)
-        this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action)*/
 
 
         /* if (action.type === "ADD-POST-TEXT") {
@@ -147,6 +167,7 @@ let store: StoreType = {
     },
 
 }
+
 
 
 export default store;

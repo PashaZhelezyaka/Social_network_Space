@@ -6,56 +6,60 @@ import {
     PostDataType,
     PostPageType,
 } from "../../../redux/Store";
-import {addPostActionCreator,
-    upDateNewPostTextActionCreator} from "../../../redux/Profile-reducer";
+import {
+    addPostAC, PostType,
+    upDateNewPostTextAC
+} from "../../../redux/Profile-reducer";
+import {PostsType} from "./MyPostsContainer";
 
-type MyPostsPropsType = {
+/*type MyPostsPropsType = {
     state: PostPageType
-    //addPostText: (newPostText: string) => void
-    //updateNewPostText: (newPostText: string) => void
-    dispatch: (action:ActionsTypes)=>void
+    //addPostText: (/!*newPostText: string*!/) => void
+    upDateNewPostText: (/!*newPostText*!/text: string) => void
+    //dispatch?: (action: ActionsTypes) => void
+    //upDateNewPostText: (text: string)=> void
+    addPost: ()=> void
+    //newPostText: string
+    //posts: Array<PostDataType>
 
-}
-
-
-
-export function MyPosts(props: MyPostsPropsType) {
-
-    const posts = props.state.postData.map(p => <Post message={p.message}
-                                                       likesCount={p.likesCount}/>)
-
-        let addPost = () => {
-        props.dispatch(addPostActionCreator(props.state.newPostText))
-        //(props.state.newPostText);
+}*/
 
 
+export function MyPosts(props: PostsType) {
+
+    const posts = props.postsPage.posts.map(p => <Post message={p.message}
+                                                   likesCount={p.likesCount}/>)
+
+    let onAddPost = () => {
+        props.addPostAC(props.postsPage.newPostText)
     }
-    const newChangeText = (e:ChangeEvent<HTMLTextAreaElement>) => {
+
+    const newChangeText = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let text = e.currentTarget.value
-        let newAction = upDateNewPostTextActionCreator(text)
-        props.dispatch(newAction) //(e.currentTarget.value);
+        props.upDateNewPostTextAC(text)
+
     }
 
 
-return (
-    <div className={m.myPost}>
-        <div>
+    return (
+        <div className={m.myPost}>
+            <div>
                 <textarea onChange={newChangeText}
-                          value={props.state.newPostText}/>
-        </div>
-        <div>
-            <button onClick={addPost}> Add Post</button>
-        </div>
-        <div>
-            <h3>My posts </h3>
-        </div>
-        <div>
-            {posts}
-        </div>
+                          value={props.postsPage.newPostText}/>
+            </div>
+            <div>
+                <button onClick={onAddPost}> Add Post</button>
+            </div>
+            <div>
+                <h3>My posts </h3>
+            </div>
+            <div>
+                {posts}
+            </div>
 
 
-    </div>
-)
+        </div>
+    )
 }
 
 

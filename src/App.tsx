@@ -12,21 +12,24 @@ import {
     ActionsTypes,
     AddMessageTextActionType,
     AddPostTextActionType,
-    StateType,
+    StateType, StoreType,
     UpdateNewMessageTextActionType,
     UpdateNewPostTextActionType
 } from "./redux/Store";
+import {DialogContainer} from "./components/Dialog/DialogContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
-type StateAppType={
-    state: StateType
+/*type StateAppType={
+    //state: StoreType
+    //store: StoreType
     //addPostText: (newPostText: string) => void // newMessageText был тут
     //updateNewPostText: (newPostText: string) =>void
     //updateNewMessageText: (newMessageText: string) => void
     //addMessageText: (newMessageText: string) =>void
-    dispatch: (action:ActionsTypes)=> void
-}
+    //dispatch: (action:ActionsTypes)=> void
+}*/
 
-export function App(props: StateAppType) {
+export function App(/*props: StateAppType*/) {
 
 
     return (
@@ -35,13 +38,14 @@ export function App(props: StateAppType) {
                 <Header/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
-                    <Route path={'/profile'} render={() => <Profile state={props.state.postPage}
-                                                                    dispatch={props.dispatch}
+                    <Route path={'/profile'} render={() => <Profile //store={props.state}
+                                                                    //dispatch={props.dispatch}
                     />}/>
-                    <Route path={'/dialog'} render={() => <Dialog state={props.state.dialogPage}
-                                                                  dispatch={props.dispatch}
+                    <Route path={'/dialog'} render={() => <DialogContainer //store={props.state}
+                                                                  //dispatch={props.dispatch}
 
                     />} />
+                    <Route path={'/users'} render={() => <UsersContainer />}/>
                     <Route path={'/news'} render={() => <News/>}/>
                     <Route path={'/music'} render={() => <Music/>}/>
                     <Route path={'/settings'} render={() => <Setting/>}/>
