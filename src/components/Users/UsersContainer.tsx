@@ -4,6 +4,7 @@ import {Users} from "./Users";
 import {followAC, initialStateType, setUserAC, unfollowAC, UserType} from "../../redux/Users-reducer";
 import {AppStateReducer} from '../../redux/Redux-store';
 import {Dispatch} from "redux";
+import { UsersC } from './UsersС';
 
 type MapStatePropsType = {
     usersPage: initialStateType
@@ -37,4 +38,4 @@ let mapDispatchToProps = (dispatch: Dispatch):mapDispatchPropsType => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Users)
+export default connect(mapStateToProps, mapDispatchToProps)(UsersC)
