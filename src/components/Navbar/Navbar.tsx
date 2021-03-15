@@ -8,6 +8,9 @@ export function Navbar () {
             <NavLink to='/profile'  activeClassName={s.activeLink}> Profile </NavLink>
         </div>
         <div className={s.item}>
+            <NavLink to='/users' activeClassName={s.activeLink}>Users</NavLink>
+        </div>
+        <div className={s.item}>
             <NavLink to='/dialog' activeClassName={s.activeLink}>Messages</NavLink>
         </div>
         <div className={s.item}>
@@ -19,6 +22,7 @@ export function Navbar () {
         <div className={s.item}>
             <NavLink to='/settings' activeClassName={s.activeLink}>Settings</NavLink>
         </div>
+
     </nav>
 }
 
