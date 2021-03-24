@@ -1,4 +1,4 @@
-import {ActionsTypes, /*MessageDataType*/} from "./Store";
+import {ActionsTypes} from "./Store";
 
 type LocationType = {
     city: string
@@ -15,7 +15,6 @@ export type UserType = {
     followed: boolean
     name: string
     status: string
-    //location: LocationType
 }
 
 export type initialStateType = {

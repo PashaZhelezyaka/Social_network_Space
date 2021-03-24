@@ -1,28 +1,8 @@
 import m from "./MyPosts.module.css";
 import React, {ChangeEvent} from "react";
 import {Post} from "./Post/Post"
-import {
-    ActionsTypes,
-    PostDataType,
-    PostPageType,
-} from "../../../redux/Store";
-import {
-    addPostAC, PostType,
-    upDateNewPostTextAC
-} from "../../../redux/Profile-reducer";
 import {PostsType} from "./MyPostsContainer";
 
-/*type MyPostsPropsType = {
-    state: PostPageType
-    //addPostText: (/!*newPostText: string*!/) => void
-    upDateNewPostText: (/!*newPostText*!/text: string) => void
-    //dispatch?: (action: ActionsTypes) => void
-    //upDateNewPostText: (text: string)=> void
-    addPost: ()=> void
-    //newPostText: string
-    //posts: Array<PostDataType>
-
-}*/
 
 
 export function MyPosts(props: PostsType) {

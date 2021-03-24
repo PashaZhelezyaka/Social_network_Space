@@ -1,29 +1,31 @@
 import React from 'react'
 import styles from './Users.module.css'
-import { UsersType } from './UsersContainer'
+import {UsersType} from './UsersContainer'
 import axios from "axios";
 import usersPhoto from './images/users.png'
 
 
-
 export function Users(props: UsersType) {
- let getUsers = () => {
+    let getUsers = () => {
 
-    if (props.usersPage.users.length === 0) {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users")
-            .then(response => {props.setUsers(response.data.items)})
+        if (props.usersPage.users.length === 0) {
+            axios.get("https://social-network.samuraijs.com/api/1.0/users")
+                .then(response => {
+                    props.setUsers(response.data.items)
+                })
 
-    }}
+        }
+    }
     return (
 
         <div>
-            <button onClick= {getUsers}> GetUsers</button>
+            <button onClick={getUsers}> GetUsers</button>
 
             {
                 props.usersPage.users.map(u => <div key={u.id}>
                     <span>
-                        <div >
-                            <img src={u.photos.small != null ? u.photos.small : usersPhoto }
+                        <div>
+                            <img src={u.photos.small != null ? u.photos.small : usersPhoto}
                                  className={styles.userPhoto}/>
                         </div>
                         <div>

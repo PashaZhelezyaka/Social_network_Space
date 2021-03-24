@@ -41,6 +41,9 @@ export type StoreType = {
     getState: () => StateType
     dispatch: (action: ActionsTypes) => void
 }
+
+
+
 export type AddPostTextActionType = {
     type: "ADD-POST-TEXT"
     updateNewPostText: string
@@ -81,7 +84,7 @@ export type ActionsTypes =
 
 
 
-let store: StoreType = {
+/*let store: StoreType = {
     _state: {
         dialogPage: {
             dialogNames: [
@@ -131,12 +134,12 @@ let store: StoreType = {
 
     dispatch(action) {
 
-        /*this._state.postPage = profileReducer(this._state.postPage, action)
+        /!*this._state.postPage = profileReducer(this._state.postPage, action)
         this._state.dialogPage = dialogReducer(this._state.dialogPage, action)
-        this._state.sidebar = sidebarReducer(this._state.sidebar, action)*/
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action)*!/
 
 
-        /* if (action.type === "ADD-POST-TEXT") {
+        /!* if (action.type === "ADD-POST-TEXT") {
              const newPost: PostDataType = {
                  id: 7,
                  message: this._state.postPage.newPostText,
@@ -162,12 +165,13 @@ let store: StoreType = {
          else if (action.type === "UP-DATE-NEW-MESSAGE-TEXT") {
              this._state.dialogPage.newMessageText = action.newMessageText
              this._callSubscriber(this._state)
-         }*/
+         }*!/
         this._callSubscriber(this._state)
     },
 
-}
+}*/
 
 
 
-export default store;
+/*
+export default store;*/

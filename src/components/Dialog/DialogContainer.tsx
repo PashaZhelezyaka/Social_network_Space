@@ -1,7 +1,5 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
 import d from './Dialog.module.css'
-import {Message} from "./Message/Message";
-import {DialogName} from "./DialogName/DialogName";
 import {
     addMessageActionCreator, initialStateType,
     upDateNewMessageTextActionCreator
@@ -16,13 +14,13 @@ type MapStatePropsType = {
 }
 
 type mapDispatchPropsType = {
-    addMessageAC: (messageText: string)=> void
-    upDateNewMessageTextAC: (text: string)=> void
+    addMessageAC: (messageText: string) => void
+    upDateNewMessageTextAC: (text: string) => void
 }
 
 export type DialogType = MapStatePropsType & mapDispatchPropsType
 
-let mapStateToProps = (state: AppStateReducer): MapStatePropsType=> {
+let mapStateToProps = (state: AppStateReducer): MapStatePropsType => {
     return {
         dialogPage: state.dialogPage
 
@@ -33,7 +31,7 @@ let mapDispatchToProps = (dispatch: Dispatch): mapDispatchPropsType => {
         addMessageAC: (messageText) => {
             dispatch(addMessageActionCreator(messageText))
         },
-        upDateNewMessageTextAC: (text)=> {
+        upDateNewMessageTextAC: (text) => {
             dispatch(upDateNewMessageTextActionCreator(text))
         }
 

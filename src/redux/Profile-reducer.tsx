@@ -1,7 +1,6 @@
 import {
     ActionsTypes,
     AddPostTextActionType,
-    /*MessageDataType,*/
     PostDataType,
     UpdateNewPostTextActionType
 } from "./Store";

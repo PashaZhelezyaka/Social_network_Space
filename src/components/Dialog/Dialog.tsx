@@ -4,39 +4,22 @@ import {Message} from "./Message/Message";
 import {DialogName} from "./DialogName/DialogName";
 import {DialogType} from "./DialogContainer";
 
-/*type DialogPropsType ={
-    //state: DialogPageType
-    //updateNewMessageText: (newMessageText: string) => void
-    //addMessageText: (newMessageText: string) =>void
-    //dispatch: (action:ActionsTypes)=>void
-    dialogPage:
-    upDateNewMessageTextAC: (text: string) => void
-    addMessageAC: ()=>void
-    }*/
+export function Dialog(props: DialogType) {
 
+    let state = props.dialogPage
 
-export function Dialog(props: DialogType ) {
+    const names = state.dialogNames.map(d => <DialogName
+        id={d.id} key={d.id} name={d.name}/>)
+    const message = state.messages.map(m => <Message message={m.message}/>)
 
- let state = props.dialogPage
-
-    const names = state.dialogNames.map(d => <DialogName id={d.id} key={d.id} name={d.name}/>)
-    const message = state.messages.map(m => <Message /*key={d.id}*/ message={m.message}/>)
-
-    let addMessage = ()=> {
-        props.addMessageAC (props.dialogPage.newMessageText /*props.state.newMessageText*/)
-        /*props.addMessageText(props.state.newMessageText)*/
+    let addMessage = () => {
+        props.addMessageAC(props.dialogPage.newMessageText)
     }
 
-    const newMessageChangeText = (e:ChangeEvent<HTMLTextAreaElement>) => {
-       let text = e.currentTarget.value
+    const newMessageChangeText = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        let text = e.currentTarget.value
         props.upDateNewMessageTextAC(text)
-        }
-        /*props.updateNewMessageText(e.currentTarget.value)*/
-
-        /*let addMessages = React.createRef<HTMLTextAreaElement>()*/
-        /*let messagesText = ()=>{
-            /!*let text = addMessages.current?.value;
-                    alert (text)}*!/*/
+    }
 
     return (
         <div className={d.dialogs}>

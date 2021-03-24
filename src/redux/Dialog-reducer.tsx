@@ -5,11 +5,7 @@ import {
     UpdateNewMessageTextActionType
 } from "./Store";
 
-/*type DialogPageType = {
-    dialogNames: Array<DialogNamesType>
-    messages: Array<MessageDataType>
-    newMessageText: string
-}*/
+
 export type initialStateType = typeof initialState
 
 export type MessageDataType = {

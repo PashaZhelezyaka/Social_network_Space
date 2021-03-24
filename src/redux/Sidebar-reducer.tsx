@@ -1,8 +1,8 @@
-import {ActionsTypes, StateType,} from "./Store";
+import {ActionsTypes} from "./Store";
 
 let initialState = {}
 
-const sidebarReducer = (state = initialState /*: StateType*/, action: ActionsTypes) => {
+const sidebarReducer = (state = initialState, action: ActionsTypes) => {
 
     return state
 }
