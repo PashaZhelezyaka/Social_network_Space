@@ -1,25 +1,30 @@
 import React from 'react'
-import styles from './Users.module.css'
-import {UsersType} from './UsersContainer'
-import axios from "axios";
-import usersPhoto from './images/users.png'
+import styles from "./Users.module.css";
+import usersPhoto from "./images/users.png";
+import {UsersPropsType} from "../../redux/Users-reducer";
 
+export function Users(props: UsersPropsType) {
 
-export function Users(props: UsersType) {
-    let getUsers = () => {
+    let pageCounts = Math.ceil(props.totalUsersCount / props.pageSize)
 
-        if (props.usersPage.users.length === 0) {
-            axios.get("https://social-network.samuraijs.com/api/1.0/users")
-                .then(response => {
-                    props.setUsers(response.data.items)
-                })
+    let pages = []
+    for (let i = 1; i <= pageCounts; i++) {
+        pages.push(i)}
 
-        }
-    }
     return (
-
         <div>
-            <button onClick={getUsers}> GetUsers</button>
+            <div>
+
+                {pages.map(p => {
+                    return <span className={props.currentPage === p ?
+                        styles.selectedPage : " "}
+                                 onClick={() => {
+                                     props.onPageChanged(p);
+                                 }}>
+                        {p} </span>
+                })}
+
+            </div>
 
             {
                 props.usersPage.users.map(u => <div key={u.id}>
@@ -47,8 +52,8 @@ export function Users(props: UsersType) {
                         </span>
                     </div>
                 )
-
             }
         </div>
     )
+
 }

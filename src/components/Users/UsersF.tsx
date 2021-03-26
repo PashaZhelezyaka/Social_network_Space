@@ -4,20 +4,25 @@ import {UsersType} from './UsersContainer'
 import axios from "axios";
 import usersPhoto from './images/users.png'
 
-export class UsersC extends React.Component<UsersType, any> {
 
-    componentDidMount() {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users")
-            .then(response => {
-                this.props.setUsers(response.data.items)
-            })
+export function UsersF(props: UsersType) {
+    let getUsers = () => {
+
+        if (props.usersPage.users.length === 0) {
+            axios.get("https://social-network.samuraijs.com/api/1.0/users")
+                .then(response => {
+                    props.setUsers(response.data.items)
+                })
+
         }
+    }
+    return (
 
-    render() {
-        return (
-            <div>
-                {
-                    this.props.usersPage.users.map(u => <div key={u.id}>
+        <div>
+
+            <button onClick={getUsers}> GetUsers </button>
+            {
+                props.usersPage.users.map(u => <div key={u.id}>
                     <span>
                         <div>
                             <img src={u.photos.small != null ? u.photos.small : usersPhoto}
@@ -25,12 +30,12 @@ export class UsersC extends React.Component<UsersType, any> {
                         </div>
                         <div>
                             {u.followed
-                                ? <button onClick={() => this.props.unfollow(u.id)}> unfollow </button>
-                                : <button onClick={() => this.props.follow(u.id)}> follow </button>}
+                                ? <button onClick={() => props.unfollow(u.id)}> unfollow </button>
+                                : <button onClick={() => props.follow(u.id)}> follow </button>}
 
                         </div>
                     </span>
-                            <span>
+                        <span>
                             <span>
                                 <div> {u.name}</div>
                                 <div>{u.status}</div>
@@ -40,12 +45,10 @@ export class UsersC extends React.Component<UsersType, any> {
                                 <div>{"u.location.city"}</div>
                             </span>
                         </span>
-                        </div>
-                    )
+                    </div>
+                )
 
-                }
-            </div>
-        )
-    }
+            }
+        </div>
+    )
 }
-

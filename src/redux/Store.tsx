@@ -45,19 +45,19 @@ export type StoreType = {
 
 
 export type AddPostTextActionType = {
-    type: "ADD-POST-TEXT"
+    type: "ADD_POST_TEXT"
     updateNewPostText: string
 }
 export type UpdateNewPostTextActionType = {
-    type: "UP-DATE-NEW-POST-TEXT"
+    type: "UP_DATE_NEW_POST_TEXT"
     newPostText: string
 }
 export type AddMessageTextActionType = {
-    type: "ADD-MESSAGE-TEXT"
+    type: "ADD_MESSAGE_TEXT"
     updateNewMessageText: string //(newMessageText: string)=>void
 }
 export type UpdateNewMessageTextActionType = {
-    type: "UP-DATE-NEW-MESSAGE-TEXT"
+    type: "UP_DATE_NEW_MESSAGE_TEXT"
     newMessageText: string
 }
 export type FollowActionType = {
@@ -69,8 +69,16 @@ export type UnfollowActionType = {
     userID: number
 }
 export type SetUserActionType = {
-    type: "SET-USERS"
+    type: "SET_USERS"
     users: Array<UserType>
+}
+export type SetCurrentPageActionType = {
+    type: "SET_CURRENT_PAGE"
+    currentPage: number
+}
+export type setTotalUsersCountActionType = {
+    type: "SET_TOTAL_USERS_COUNT"
+    totalUsersCount: number
 }
 
 export type ActionsTypes =
@@ -81,6 +89,8 @@ export type ActionsTypes =
     | FollowActionType
     | UnfollowActionType
     | SetUserActionType
+    | SetCurrentPageActionType
+    | setTotalUsersCountActionType
 
 
 
