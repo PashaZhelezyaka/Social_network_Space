@@ -80,6 +80,10 @@ export type setTotalUsersCountActionType = {
     type: "SET_TOTAL_USERS_COUNT"
     totalUsersCount: number
 }
+export type ToggleIsFetchingActionType = {
+    type: "TOGGLE_IS_FETCHING"
+    isFetching: boolean
+}
 
 export type ActionsTypes =
     AddPostTextActionType
@@ -91,6 +95,7 @@ export type ActionsTypes =
     | SetUserActionType
     | SetCurrentPageActionType
     | setTotalUsersCountActionType
+    | ToggleIsFetchingActionType
 
 
 
