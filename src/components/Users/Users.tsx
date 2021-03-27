@@ -1,7 +1,7 @@
 import React from 'react'
-import styles from "./Users.module.css";
-import usersPhoto from "./images/users.png";
-import {UsersPropsType} from "../../redux/Users-reducer";
+import styles from './Users.module.css';
+import usersPhoto from './../../assets/images/users.png'
+import {UsersPropsType} from '../../redux/Users-reducer';
 
 export function Users(props: UsersPropsType) {
 
