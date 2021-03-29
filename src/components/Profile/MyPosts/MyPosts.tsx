@@ -11,12 +11,12 @@ export function MyPosts(props: PostsType) {
                                                    likesCount={p.likesCount}/>)
 
     let onAddPost = () => {
-        props.addPostAC(props.postsPage.newPostText)
+        props.addPost(props.postsPage.newPostText)
     }
 
     const newChangeText = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let text = e.currentTarget.value
-        props.upDateNewPostTextAC(text)
+        props.upDateNewPostText(text)
 
     }
 

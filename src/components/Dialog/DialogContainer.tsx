@@ -1,8 +1,8 @@
 import React from "react";
 import d from './Dialog.module.css'
 import {
-    addMessageActionCreator, initialStateType,
-    upDateNewMessageTextActionCreator
+    addMessage, initialStateType,
+    upDateNewMessageText
 } from "../../redux/Dialog-reducer";
 import {Dialog} from "./Dialog";
 import {connect} from "react-redux";
@@ -14,8 +14,8 @@ type MapStatePropsType = {
 }
 
 type mapDispatchPropsType = {
-    addMessageAC: (messageText: string) => void
-    upDateNewMessageTextAC: (text: string) => void
+    addMessage: (messageText: string) => void
+    upDateNewMessageText: (text: string) => void
 }
 
 export type DialogType = MapStatePropsType & mapDispatchPropsType
@@ -26,16 +26,17 @@ let mapStateToProps = (state: AppStateReducer): MapStatePropsType => {
 
     }
 }
-let mapDispatchToProps = (dispatch: Dispatch): mapDispatchPropsType => {
+/*let mapDispatchToProps = (dispatch: Dispatch): mapDispatchPropsType => {
     return {
-        addMessageAC: (messageText) => {
-            dispatch(addMessageActionCreator(messageText))
+        addMessage: (messageText) => {
+            dispatch(addMessage(messageText))
         },
-        upDateNewMessageTextAC: (text) => {
-            dispatch(upDateNewMessageTextActionCreator(text))
+        upDateNewMessageText: (text) => {
+            dispatch(upDateNewMessageText(text))
         }
 
     }
-}
+}*/
 
-export const DialogContainer = connect(mapStateToProps, mapDispatchToProps)(Dialog)
+export const DialogContainer = connect(mapStateToProps, {
+    addMessage, upDateNewMessageText,})(Dialog)

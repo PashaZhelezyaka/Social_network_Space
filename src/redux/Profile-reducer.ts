@@ -52,10 +52,10 @@ const profileReducer = (state:initialStateType = initialState,
             return state
     }
 }
-export const addPostAC = (postText: string): AddPostTextActionType => {
+export const addPost = (postText: string): AddPostTextActionType => {
     return {type: "ADD_POST_TEXT" ,updateNewPostText: postText}
 }
-export const upDateNewPostTextAC = (text: string): UpdateNewPostTextActionType=> {
+export const upDateNewPostText = (text: string): UpdateNewPostTextActionType=> {
     return {type:"UP_DATE_NEW_POST_TEXT" , newPostText:text}
 }
 

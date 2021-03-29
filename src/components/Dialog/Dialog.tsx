@@ -13,12 +13,12 @@ export function Dialog(props: DialogType) {
     const message = state.messages.map(m => <Message message={m.message}/>)
 
     let addMessage = () => {
-        props.addMessageAC(props.dialogPage.newMessageText)
+        props.addMessage(props.dialogPage.newMessageText)
     }
 
     const newMessageChangeText = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let text = e.currentTarget.value
-        props.upDateNewMessageTextAC(text)
+        props.upDateNewMessageText(text)
     }
 
     return (

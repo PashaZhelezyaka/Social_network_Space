@@ -12,7 +12,7 @@ let rootReducers = combineReducers({
 })
 let store = createStore(rootReducers)
 
-export type AppStateReducer = ReturnType<typeof rootReducers>
+export type  AppStateReducer = ReturnType<typeof rootReducers>
 
 
 // @ts-ignore
