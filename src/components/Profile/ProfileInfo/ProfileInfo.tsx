@@ -1,19 +1,18 @@
 import React from 'react';
 import p from './ProfileInfo.module.css'
 import {Preloader} from "../../common/Preloader/Preloader";
-import {UserPropsType} from "../ProfileContainer";
+import {OneUserPropsType} from "../ProfileContainer";
 import {UserProfileType} from "../../../redux/Profile-reducer";
 
 type PropsType = {
     profile: UserProfileType
 }
 export function ProfileInfo(props: PropsType) {
-    debugger
 
     return (<div className={p.profileInfo}>
-            <div className={p.img}>
-                 {/*<img src='https://i.pinimg.com/originals/e9/2f/03/e92f03ace41d591e3c3f7454105dcffb.jpg'
-                 alt="space"/>*/}
+            <div className={p.imgTop}>
+                 {/*{<img src='https://delo.ua/files/news/images/3462/70/picture2_ukraina-ty-prosto_346270_p0.jpg'
+                 alt="space"/>}*/}
 
             </div>
             <div className={p.description}>
