@@ -1,4 +1,4 @@
-import profileReducer from "./Profile-reducer";
+import profileReducer, {UserProfileType} from "./Profile-reducer";
 import dialogReducer from "./Dialog-reducer";
 import sidebarReducer from "./Sidebar-reducer";
 import {UserType} from "./Users-reducer";
@@ -84,6 +84,10 @@ export type ToggleIsFetchingActionType = {
     type: "TOGGLE_IS_FETCHING"
     isFetching: boolean
 }
+export type setUserProfileActionType = {
+    type: "SET_USER_PROFILE"
+    profile: UserProfileType | null
+}
 
 export type ActionsTypes =
     AddPostTextActionType
@@ -96,6 +100,7 @@ export type ActionsTypes =
     | SetCurrentPageActionType
     | setTotalUsersCountActionType
     | ToggleIsFetchingActionType
+    | setUserProfileActionType
 
 
 

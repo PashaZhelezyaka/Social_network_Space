@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Users.module.css';
 import usersPhoto from './../../assets/images/users.png';
 import {UsersPropsType} from '../../redux/Users-reducer';
+import { NavLink } from 'react-router-dom';
 
 export function Users(props: UsersPropsType) {
 
@@ -9,7 +10,8 @@ export function Users(props: UsersPropsType) {
 
     let pages = []
     for (let i = 1; i <= pageCounts; i++) {
-        pages.push(i)}
+        pages.push(i)
+    }
 
     return (
         <div>
@@ -30,8 +32,10 @@ export function Users(props: UsersPropsType) {
                 props.usersPage.users.map(u => <div key={u.id}>
                     <span>
                         <div>
+                            <NavLink to = {'/profile/' + u.id } >
                             <img src={u.photos.small != null ? u.photos.small : usersPhoto}
                                  className={styles.userPhoto}/>
+                            </NavLink>
                         </div>
                         <div>
                             {u.followed

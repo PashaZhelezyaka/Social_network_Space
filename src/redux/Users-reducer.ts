@@ -20,7 +20,7 @@ export type UsersPropsType = {
     unfollow: (userID: number) => void
     follow: (userID: number) => void
 }
-type PhotosType = {
+export type PhotosType = {
     small: string
     large: string
 }
