@@ -14,7 +14,7 @@ import {Dispatch} from 'redux';
 import axios from 'axios';
 import {Users} from './Users';
 import preloader from './../../assets/images/preloader.gif';
-import { Preloader } from '../common/Preloader/Preloader';
+import {Preloader} from '../common/Preloader/Preloader';
 
 
 export class UsersContainer extends React.Component<UsersType, any> {
@@ -42,7 +42,7 @@ export class UsersContainer extends React.Component<UsersType, any> {
     render() {
         return <>
 
-            {this.props.isFetching ? <Preloader /> : null}
+            {this.props.isFetching ? <Preloader/> : null}
             <Users
                 totalUsersCount={this.props.totalUsersCount}
                 pageSize={this.props.pageSize}
@@ -72,7 +72,7 @@ type mapDispatchPropsType = {
     setUsers: (users: Array<UserType>) => void
     setCurrentPage: (currentPage: number) => void
     setTotalUsersCount: (totalCount: number) => void
-    toggleIsFetching: (isFetching: boolean)=> void
+    toggleIsFetching: (isFetching: boolean) => void
 }
 
 export type UsersType = MapStatePropsType & mapDispatchPropsType
@@ -114,4 +114,5 @@ let mapStateToProps = (state: AppStateReducer): MapStatePropsType => {
 
 export default connect(mapStateToProps, {
     follow, unfollow, setUsers, setCurrentPage,
-    setTotalUsersCount, toggleIsFetching })(UsersContainer)
+    setTotalUsersCount, toggleIsFetching
+})(UsersContainer)

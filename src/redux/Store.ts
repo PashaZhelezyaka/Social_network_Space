@@ -2,6 +2,7 @@ import profileReducer, {UserProfileType} from "./Profile-reducer";
 import dialogReducer from "./Dialog-reducer";
 import sidebarReducer from "./Sidebar-reducer";
 import {UserType} from "./Users-reducer";
+import { DataDataType} from "./Auth-reducer";
 
 export type StateType = {
     dialogPage: DialogPageType
@@ -88,6 +89,12 @@ export type setUserProfileActionType = {
     type: "SET_USER_PROFILE"
     profile: UserProfileType | null
 }
+export type setUserAuthDataActionType = {
+    type: "SET_USER_DATE"
+    data: DataDataType | null
+
+}
+
 
 export type ActionsTypes =
     AddPostTextActionType
@@ -101,6 +108,7 @@ export type ActionsTypes =
     | setTotalUsersCountActionType
     | ToggleIsFetchingActionType
     | setUserProfileActionType
+    | setUserAuthDataActionType
 
 
 
