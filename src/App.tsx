@@ -15,7 +15,6 @@ function App() {
     return (
         <div className='app-wrapper'>
 
-            {/*<HeaderContainer login={'fksdkvnksdfk'} isAuth={true} data={{id: null, email: null, login: null}} setAuthUserData={() => {}}/>*/}
             <HeaderContainer />
             <Navbar/>
             <div className='app-wrapper-content'>
