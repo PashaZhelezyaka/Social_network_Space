@@ -18,7 +18,6 @@ export function Header(props: PropsType) {
                 </NavLink>}
 
 
-
         </div>
 
     </header>

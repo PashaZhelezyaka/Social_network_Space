@@ -17,7 +17,19 @@ export const usersAPI = {
     }
 }
 
-
-
-/* headers: {
-         "API-KEY":"ea564460-4138-4503-aa33-6bc94781f7f2"}*/
+export const unfollowUsersAPI = {
+    getFollow(id: number = 1) {
+        return instanse.delete(`follow/${id}`
+        ).then(response => {
+            return response.data
+        })
+    }
+}
+export const followUsersAPI = {
+    getFollow(id: number = 1) {
+        return instanse.post(`follow/${id}`
+        ).then(response => {
+            return response.data
+        })
+    }
+}
