@@ -85,6 +85,11 @@ export type ToggleIsFetchingActionType = {
     type: "TOGGLE_IS_FETCHING"
     isFetching: boolean
 }
+export type FollowingProgressActionType = {
+    type: "FOLLOWING_IN_PROGRESS"
+    isFetching: boolean
+    userID: number
+}
 export type setUserProfileActionType = {
     type: "SET_USER_PROFILE"
     profile: UserProfileType | null
@@ -109,6 +114,7 @@ export type ActionsTypes =
     | ToggleIsFetchingActionType
     | setUserProfileActionType
     | setUserAuthDataActionType
+    | FollowingProgressActionType
 
 
 

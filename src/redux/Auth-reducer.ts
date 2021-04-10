@@ -22,7 +22,7 @@ export type authDataType = {
 
 
 const initialState = {
-    data: {id: null, email: null, login: null},
+    data: {id: null, email: null, login: "Master"},
     isAuth: false,
     resultCode: null,
     messages: []
