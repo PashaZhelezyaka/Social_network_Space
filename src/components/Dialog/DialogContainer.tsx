@@ -1,13 +1,8 @@
 import React from "react";
-import d from './Dialog.module.css'
-import {
-    addMessage, initialStateType,
-    upDateNewMessageText
-} from "../../redux/Dialog-reducer";
+import {addMessage, initialStateType, upDateNewMessageText} from "../../redux/Dialog-reducer";
 import {Dialog} from "./Dialog";
 import {connect} from "react-redux";
 import {AppStateReducer} from "../../redux/Redux-store";
-import {Dispatch} from "redux";
 
 type MapStatePropsType = {
     dialogPage: initialStateType
@@ -26,17 +21,8 @@ let mapStateToProps = (state: AppStateReducer): MapStatePropsType => {
 
     }
 }
-/*let mapDispatchToProps = (dispatch: Dispatch): mapDispatchPropsType => {
-    return {
-        addMessage: (messageText) => {
-            dispatch(addMessage(messageText))
-        },
-        upDateNewMessageText: (text) => {
-            dispatch(upDateNewMessageText(text))
-        }
 
-    }
-}*/
 
 export const DialogContainer = connect(mapStateToProps, {
-    addMessage, upDateNewMessageText,})(Dialog)
+    addMessage, upDateNewMessageText,
+})(Dialog)

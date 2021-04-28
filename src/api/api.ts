@@ -14,22 +14,18 @@ export const usersAPI = {
         ).then(response => {
             return response.data
         })
-    }
-}
-
-export const unfollowUsersAPI = {
-    getFollow(id: number = 1) {
+    },
+    follow(id: number = 1) {
+        return instanse.post(`follow/${id}`
+        ).then(response => {
+            return response.data
+        })
+    },
+    unfollow(id: number = 1) {
         return instanse.delete(`follow/${id}`
         ).then(response => {
             return response.data
         })
     }
-}
-export const followUsersAPI = {
-    getFollow(id: number = 1) {
-        return instanse.post(`follow/${id}`
-        ).then(response => {
-            return response.data
-        })
-    }
+
 }
