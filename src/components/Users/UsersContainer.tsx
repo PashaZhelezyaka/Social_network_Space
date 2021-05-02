@@ -1,21 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {
-    follow, getUsers,
+    follow,
+    getUsers,
     initialStateType,
     setCurrentPage,
     setTotalUsersCount,
-    setUsers, toggleFollowingProgress, toggleIsFetching,
+    setUsers,
+    toggleFollowingProgress,
+    toggleIsFetching,
     unfollow,
     UserType
 } from '../../redux/Users-reducer';
 import {AppStateReducer} from '../../redux/Redux-store';
-import {Dispatch} from 'redux';
-import axios from 'axios';
 import {Users} from './Users';
-import preloader from './../../assets/images/preloader.gif';
 import {Preloader} from '../common/Preloader/Preloader';
-import {usersAPI} from '../../api/api';
 
 
 export class UsersContainer extends React.Component<UsersType, {}> {

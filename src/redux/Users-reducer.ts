@@ -1,8 +1,6 @@
 import {ActionsTypes} from "./Store";
 import {usersAPI} from "../api/api";
 import {Dispatch} from "redux";
-import {ThunkAction} from "redux-thunk";
-import {AppStateReducer} from "./Redux-store";
 
 const FOLLOW = "FOLLOW"
 const UNFOLLOW = "UNFOLLOW"
@@ -24,7 +22,7 @@ export type UsersPropsType = {
     usersPage: initialStateType
     unfollow: (userID: number) => void
     follow: (userID: number) => void
-   // toggleFollowingProgress: (isFetching: boolean, userID: number) => void
+    // toggleFollowingProgress: (isFetching: boolean, userID: number) => void
     followingInProgress: Array<number>
 }
 export type PhotosType = {
@@ -142,7 +140,7 @@ export const getUsers = (currentPage: number, pageSize: number) => {
     }
 }
 
-export const follow = (userID: number)=> {
+export const follow = (userID: number) => {
     return (dispatch: Dispatch) => {
         dispatch(toggleFollowingProgress(true, userID))
         usersAPI.follow(userID).then(data => {

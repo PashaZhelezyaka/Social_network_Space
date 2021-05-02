@@ -5,6 +5,8 @@ import {
     UpdateNewPostTextActionType
 } from "./Store";
 import {PhotosType} from "./Users-reducer";
+import {Dispatch} from "redux";
+import {usersAPI} from "../api/api";
 
 const ADD_POST_TEXT = "ADD_POST_TEXT"
 const UP_DATE_NEW_POST_TEXT = "UP_DATE_NEW_POST_TEXT"
@@ -88,6 +90,13 @@ export const upDateNewPostText = (text: string): UpdateNewPostTextActionType => 
 }
 export const setUserProfile = (profile: UserProfileType | null): setUserProfileActionType => {
     return {type: SET_USER_PROFILE, profile}
+}
+export const getUserProfile = (userId: string)=> {
+    return (dispatch: Dispatch)=> {
+        usersAPI.getProfile(userId).then(response => {
+            dispatch(setUserProfile (response.data))
+        })
+    }
 }
 
 

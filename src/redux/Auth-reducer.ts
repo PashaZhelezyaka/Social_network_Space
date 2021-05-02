@@ -2,6 +2,8 @@ import {
     ActionsTypes,
     setUserAuthDataActionType
 } from "./Store";
+import {Dispatch} from "redux";
+import {authAPI} from "../api/api";
 
 const SET_USER_DATE = "SET_USER_DATE"
 
@@ -22,7 +24,7 @@ export type authDataType = {
 
 
 const initialState = {
-    data: {id: null, email: null, login: "Master"},
+    data: {id: null, email: null, login: 'Authorized'},
     isAuth: false,
     resultCode: null,
     messages: []
@@ -38,15 +40,26 @@ const authReducer = (state: authDataType = initialState, action: ActionsTypes): 
                 isAuth: true
             }
         }
-
         default:
             return state
     }
 }
-export const setAuthUserData = (id: number | null, email: string | null, login: string | null): setUserAuthDataActionType => {
+export const setAuthUserData = (id: number | null, email: string | null, login: string | null):
+    setUserAuthDataActionType => {
     return {
         type: "SET_USER_DATE",
         data: {id, email, login}
+    }
+}
+export const getAuthUserData = () => {
+    return (dispatch: Dispatch) => {
+        authAPI.me()
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    let {id, email, login} = response.data.data
+                    dispatch(setAuthUserData(id, email, login))
+                }
+            })
     }
 }
 

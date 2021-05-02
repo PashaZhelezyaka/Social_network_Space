@@ -1,4 +1,6 @@
 import axios from "axios";
+import {UserProfileType} from "../redux/Profile-reducer";
+import { authDataType } from "../redux/Auth-reducer";
 
 const instanse = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
@@ -26,6 +28,16 @@ export const usersAPI = {
         ).then(response => {
             return response.data
         })
+    },
+    getProfile(userId: string) {
+        return instanse.get(`profile/${userId}`)
     }
-
 }
+export const authAPI = {
+    me() {
+        return instanse.get<authDataType>(`auth/me`)
+    }
+}
+
+
+
