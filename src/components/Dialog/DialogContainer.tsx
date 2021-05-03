@@ -1,13 +1,13 @@
 import React from "react";
 import {addMessage, initialStateType, upDateNewMessageText} from "../../redux/Dialog-reducer";
-import {Dialog} from "./Dialog";
+import Dialog from "./Dialog";
 import {connect} from "react-redux";
 import {AppStateReducer} from "../../redux/Redux-store";
 import {WithAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 type MapStatePropsType = {
     dialogPage: initialStateType
-
 }
 
 type mapDispatchPropsType = {
@@ -20,12 +20,9 @@ export type DialogType = MapStatePropsType & mapDispatchPropsType
 let mapStateToProps = (state: AppStateReducer): MapStatePropsType => {
     return {
         dialogPage: state.dialogPage,
-
     }
 }
 
-let AuthRedirectComponent = WithAuthRedirect(Dialog)
-
-export const DialogContainer = connect(mapStateToProps, {
-    addMessage, upDateNewMessageText,
-})(AuthRedirectComponent)
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, {addMessage, upDateNewMessageText}),
+    WithAuthRedirect)(Dialog);

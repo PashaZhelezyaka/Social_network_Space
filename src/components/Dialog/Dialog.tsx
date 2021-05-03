@@ -36,3 +36,4 @@ export function Dialog(props: DialogType) {
     )
 }
 
+export default Dialog;

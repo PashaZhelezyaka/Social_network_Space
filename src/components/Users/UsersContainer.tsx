@@ -16,6 +16,7 @@ import {AppStateReducer} from '../../redux/Redux-store';
 import {Users} from './Users';
 import {Preloader} from '../common/Preloader/Preloader';
 import {WithAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 export class UsersContainer extends React.Component<UsersType, {}> {
@@ -42,12 +43,9 @@ export class UsersContainer extends React.Component<UsersType, {}> {
                 unfollow={this.props.unfollow}
                 //toggleFollowingProgress={this.props.toggleFollowingProgress}
                 followingInProgress={this.props.followingInProgress}
-
             />
         </>
     }
-
-
 }
 
 
@@ -58,7 +56,6 @@ type MapStatePropsType = {
     currentPage: number
     isFetching: boolean
     followingInProgress: Array<number>
-
 }
 type mapDispatchPropsType = {
     follow: (userID: number) => void
@@ -84,11 +81,8 @@ let mapStateToProps = (state: AppStateReducer): MapStatePropsType => {
 
     })
 }
-
-let withRedirect = WithAuthRedirect(UsersContainer)
-
-export default connect(mapStateToProps, {
+export default compose<React.ComponentType>(connect(mapStateToProps, {
     follow, unfollow, setUsers,
     setCurrentPage, setTotalUsersCount, toggleIsFetching,
     toggleFollowingProgress, getUsers
-})(withRedirect)
+}), WithAuthRedirect)(UsersContainer)
