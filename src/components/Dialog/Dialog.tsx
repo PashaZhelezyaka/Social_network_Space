@@ -3,7 +3,6 @@ import d from './Dialog.module.css'
 import {Message} from "./Message/Message";
 import {DialogName} from "./DialogName/DialogName";
 import {DialogType} from "./DialogContainer";
-import { Redirect } from "react-router-dom";
 
 export function Dialog(props: DialogType) {
 
@@ -21,9 +20,6 @@ export function Dialog(props: DialogType) {
         let text = e.currentTarget.value
         props.upDateNewMessageText(text)
     }
-     if (!props.isAuth ) { //this.props.isAuth === false
-         return <Redirect to = {'/login'} />
-     }
 
     return (
         <div className={d.dialogs}>
@@ -36,9 +32,7 @@ export function Dialog(props: DialogType) {
             <button onClick={addMessage}>send message</button>
             <textarea placeholder={"Enter your message"}
                       onChange={newMessageChangeText} value={state.newMessageText}/>
-
-
         </div>
     )
-
 }
+

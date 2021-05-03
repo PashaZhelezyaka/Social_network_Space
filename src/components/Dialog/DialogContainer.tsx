@@ -3,10 +3,10 @@ import {addMessage, initialStateType, upDateNewMessageText} from "../../redux/Di
 import {Dialog} from "./Dialog";
 import {connect} from "react-redux";
 import {AppStateReducer} from "../../redux/Redux-store";
+import {WithAuthRedirect} from "../../hoc/withAuthRedirect";
 
 type MapStatePropsType = {
     dialogPage: initialStateType
-    isAuth: boolean
 
 }
 
@@ -20,12 +20,12 @@ export type DialogType = MapStatePropsType & mapDispatchPropsType
 let mapStateToProps = (state: AppStateReducer): MapStatePropsType => {
     return {
         dialogPage: state.dialogPage,
-        isAuth: state.auth.isAuth
 
     }
 }
 
+let AuthRedirectComponent = WithAuthRedirect(Dialog)
 
 export const DialogContainer = connect(mapStateToProps, {
     addMessage, upDateNewMessageText,
-})(Dialog)
+})(AuthRedirectComponent)
