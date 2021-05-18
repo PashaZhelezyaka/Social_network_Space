@@ -2,7 +2,7 @@ import React from 'react';
 import {Profile} from "./Profile";
 import {connect} from 'react-redux';
 import {AppStateReducer} from "../../redux/Redux-store";
-import {getUserProfile, UserProfileType} from '../../redux/Profile-reducer';
+import {getUserProfileTC, getUserStatusTC, updateStatusTC, UserProfileType} from '../../redux/Profile-reducer';
 import {Preloader} from "../common/Preloader/Preloader";
 import {RouteComponentProps, withRouter} from 'react-router-dom';
 import {WithAuthRedirect} from "../../hoc/withAuthRedirect";
@@ -10,11 +10,16 @@ import {compose} from "redux";
 
 type MapStatePropsType = {
     profile: UserProfileType | null
+    status: string
+
 }
 
 
 type mapDispatchPropsType = {
-    getUserProfile: (userID: string) => void
+    getUserProfileTC: (userId: string) => void
+    getUserStatusTC: (userId: string) => void
+    updateStatusTC: (status: string) => void
+
 }
 
 type PathParamsType = {
@@ -32,25 +37,32 @@ class ProfileContainer extends React.Component <UserPropsType> {
         if (!userId) {
             userId = '2'
         }
-        this.props.getUserProfile(userId)
+        this.props.getUserProfileTC(userId)
+        this.props.getUserStatusTC(userId)
+        /*this.props.updateStatusTC()*/
+
     }
 
     render() {
         if (!this.props.profile) {
             return <Preloader/>
         }
-        return <Profile {...this.props} profile={this.props.profile}/>
+        return <Profile {...this.props} profile={this.props.profile}
+                        status={this.props.status} updateStatus={this.props.updateStatusTC}/>
     }
 }
 
 let mapStateToProps = (state: AppStateReducer): MapStatePropsType => {
     return ({
         profile: state.postPage.profile,
+        status: state.postPage.status
     })
 }
 
 
 export default compose<React.ComponentType>(
-    connect(mapStateToProps, {getUserProfile}),
-    withRouter, /*WithAuthRedirect*/)(ProfileContainer)
+    connect(mapStateToProps, {
+        getUserProfileTC, getUserStatusTC, updateStatusTC
+    }),
+    withRouter,  /*WithAuthRedirect*/)(ProfileContainer)
 

@@ -30,9 +30,23 @@ export const usersAPI = {
         })
     },
     getProfile(userId: string) {
-        return instanse.get(`profile/${userId}`)
+        console.warn('Old method')
+        return profileAPI.getProfile(userId)
     }
 }
+
+export const profileAPI = {
+    getProfile(userId: string) {
+        return instanse.get(`profile/${userId}`)
+    },
+    getStatus (userId: string){
+        return instanse.get(`/profile/status/${userId}`)
+    },
+    updateStatus (status: string){
+        return instanse.put(`/profile/status`, {status: status})
+    }
+}
+
 export const authAPI = {
     me() {
         return instanse.get<authDataType>(`auth/me`)

@@ -1,8 +1,8 @@
 import React from "react";
 
 import {
-    addPost,
-    upDateNewPostText
+    addPostAC,
+    upDateNewPostTextAC
 } from "../../../redux/Profile-reducer";
 import {MyPosts} from "./MyPosts";
 import {connect} from "react-redux";
@@ -30,18 +30,18 @@ let mapStateToProps = (state: AppStateReducer): MapStatePropsType => {
 }
 /*let mapDispatchToProps = (dispatch: Dispatch): mapDispatchPropsType => {
     return {
-        addPost: (postText) => {
-            dispatch(addPost(postText))
+        addPostAC: (postText) => {
+            dispatch(addPostAC(postText))
         },
-        upDateNewPostText: (text) => {
-            dispatch(upDateNewPostText(text))
+        upDateNewPostTextAC: (text) => {
+            dispatch(upDateNewPostTextAC(text))
         }
 
     }
 }*/
 
 export const MyPostsContainer = connect(mapStateToProps, {
-    addPost, upDateNewPostText,})(MyPosts)
+    addPost: addPostAC, upDateNewPostText: upDateNewPostTextAC,})(MyPosts)
 
 
 

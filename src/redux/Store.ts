@@ -2,7 +2,7 @@ import profileReducer, {UserProfileType} from "./Profile-reducer";
 import dialogReducer from "./Dialog-reducer";
 import sidebarReducer from "./Sidebar-reducer";
 import {UserType} from "./Users-reducer";
-import { DataDataType} from "./Auth-reducer";
+import {DataDataType} from "./Auth-reducer";
 
 export type StateType = {
     dialogPage: DialogPageType
@@ -15,14 +15,14 @@ export type PostDataType = {
     message: string
     likesCount: string
 }
- type MessageDataType = {
+type MessageDataType = {
     message: string
 }
- type DialogNamesType = {
+type DialogNamesType = {
     id: number
     name: string
 }
- type DialogPageType = {
+type DialogPageType = {
     dialogNames: Array<DialogNamesType>
     messageData: Array<MessageDataType>
     newMessageText: string
@@ -42,7 +42,6 @@ export type StoreType = {
     getState: () => StateType
     dispatch: (action: ActionsTypes) => void
 }
-
 
 
 export type AddPostTextActionType = {
@@ -94,6 +93,10 @@ export type setUserProfileActionType = {
     type: "SET_USER_PROFILE"
     profile: UserProfileType | null
 }
+export type setUserStatusActionType = {
+    type: "SET_USER_STATUS"
+    status: string
+}
 export type setUserAuthDataActionType = {
     type: "SET_USER_DATE"
     data: DataDataType | null
@@ -115,7 +118,7 @@ export type ActionsTypes =
     | setUserProfileActionType
     | setUserAuthDataActionType
     | FollowingProgressActionType
-
+    | setUserStatusActionType
 
 
 /*let store: StoreType = {
@@ -204,7 +207,6 @@ export type ActionsTypes =
     },
 
 }*/
-
 
 
 /*
