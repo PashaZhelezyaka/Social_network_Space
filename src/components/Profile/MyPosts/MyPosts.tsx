@@ -4,11 +4,10 @@ import {Post} from "./Post/Post"
 import {PostsType} from "./MyPostsContainer";
 
 
-
 export function MyPosts(props: PostsType) {
 
     const posts = props.postsPage.posts.map(p => <Post message={p.message}
-                                                   likesCount={p.likesCount}/>)
+                                                       likesCount={p.likesCount}/>)
 
     let onAddPost = () => {
         props.addPost(props.postsPage.newPostText)
@@ -19,7 +18,6 @@ export function MyPosts(props: PostsType) {
         props.upDateNewPostText(text)
 
     }
-
 
     return (
         <div className={m.myPost}>

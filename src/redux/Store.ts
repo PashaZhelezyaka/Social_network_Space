@@ -56,10 +56,10 @@ export type AddMessageTextActionType = {
     type: "ADD_MESSAGE_TEXT"
     updateNewMessageText: string //(newMessageText: string)=>void
 }
-export type UpdateNewMessageTextActionType = {
+/*export type UpdateNewMessageTextActionType = {
     type: "UP_DATE_NEW_MESSAGE_TEXT"
     newMessageText: string
-}
+}*/
 export type FollowActionType = {
     type: "FOLLOW"
     userID: number
@@ -108,7 +108,7 @@ export type ActionsTypes =
     AddPostTextActionType
     | UpdateNewPostTextActionType
     | AddMessageTextActionType
-    | UpdateNewMessageTextActionType
+
     | FollowActionType
     | UnfollowActionType
     | SetUserActionType

@@ -1,10 +1,29 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
 import d from './Dialog.module.css'
 import {Message} from "./Message/Message";
 import {DialogName} from "./DialogName/DialogName";
 import {DialogType} from "./DialogContainer";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
 
-export function Dialog(props: DialogType) {
+type AddMessageFormType = {
+    newMessageText: string
+}
+
+export const AddMessageForm: React.FC<InjectedFormProps<AddMessageFormType>> = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field placeholder={"Enter your message"} name={"newMessageText"} component={"textarea"}/>
+            </div>
+            <div>
+                <button>send message</button>
+            </div>
+        </form>
+    )
+}
+const MessageReduxForm = reduxForm<AddMessageFormType>({form: 'dialogAddMessageForm'})(AddMessageForm)
+
+function Dialog(props: DialogType) {
 
     let state = props.dialogPage
 
@@ -12,13 +31,9 @@ export function Dialog(props: DialogType) {
         id={d.id} key={d.id} name={d.name}/>)
     const message = state.messages.map(m => <Message message={m.message}/>)
 
-    let addMessage = () => {
-        props.addMessage(props.dialogPage.newMessageText)
-    }
+    let addNewMessage = (values: AddMessageFormType) => {
+        props.addMessage(values.newMessageText)
 
-    const newMessageChangeText = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        let text = e.currentTarget.value
-        props.upDateNewMessageText(text)
     }
 
     return (
@@ -29,9 +44,7 @@ export function Dialog(props: DialogType) {
             <div className={d.messages}>
                 {message}
             </div>
-            <button onClick={addMessage}>send message</button>
-            <textarea placeholder={"Enter your message"}
-                      onChange={newMessageChangeText} value={state.newMessageText}/>
+            <MessageReduxForm onSubmit={addNewMessage}/>
         </div>
     )
 }

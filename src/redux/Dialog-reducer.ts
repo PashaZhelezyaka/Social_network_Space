@@ -1,7 +1,6 @@
-import {ActionsTypes, AddMessageTextActionType, UpdateNewMessageTextActionType} from "./Store";
+import {ActionsTypes, AddMessageTextActionType} from "./Store";
 
 const ADD_MESSAGE_TEXT = "ADD_MESSAGE_TEXT"
-const UP_DATE_NEW_MESSAGE_TEXT = "UP_DATE_NEW_MESSAGE_TEXT"
 
 export type initialStateType = typeof initialState
 
@@ -33,39 +32,26 @@ const initialState = {
         {id: 6, message: "I do not know anything"},
     ] as Array<MessageDataType>,
 
-    newMessageText: " ",
 }
 const dialogReducer = (state: initialStateType = initialState,
                        action: ActionsTypes): initialStateType => {
     switch (action.type) {
         case ADD_MESSAGE_TEXT: {
-            let newMessage = state.newMessageText
+            let newMessage = action.updateNewMessageText
             return {
                 ...state,
-                newMessageText: "",
                 messages: [...state.messages,
                     {id: 7, message: newMessage}]
-            }
-        }
-        case UP_DATE_NEW_MESSAGE_TEXT: {
-            return {
-                ...state, newMessageText: action.newMessageText
             }
         }
         default:
             return state
     }
 }
-export const addMessage = (messageText: string): AddMessageTextActionType => {
+export const addMessage = (newMessageText: string): AddMessageTextActionType => {
     return {
         type: "ADD_MESSAGE_TEXT",
-        updateNewMessageText: messageText
-    }
-}
-export const upDateNewMessageText = (text: string): UpdateNewMessageTextActionType => {
-    return {
-        type: "UP_DATE_NEW_MESSAGE_TEXT",
-        newMessageText: text
+        updateNewMessageText: newMessageText
     }
 }
 
