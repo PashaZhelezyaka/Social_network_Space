@@ -1,7 +1,7 @@
 import {
     ActionsTypes,
     setUserAuthDataActionType
-} from "./Store";
+} from "./StoreTypes";
 import {Dispatch} from "redux";
 import {authAPI} from "../api/api";
 

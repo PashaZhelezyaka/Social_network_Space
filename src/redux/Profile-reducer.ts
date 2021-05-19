@@ -1,15 +1,15 @@
 import {
     ActionsTypes,
     AddPostTextActionType,
-    PostDataType, setUserProfileActionType, setUserStatusActionType,
-    UpdateNewPostTextActionType
-} from "./Store";
+    PostDataType,
+    setUserProfileActionType,
+    setUserStatusActionType,
+} from "./StoreTypes";
 import {PhotosType} from "./Users-reducer";
 import {Dispatch} from "redux";
-import {profileAPI, usersAPI} from "../api/api";
+import {profileAPI} from "../api/api";
 
 const ADD_POST_TEXT = "ADD_POST_TEXT"
-const UP_DATE_NEW_POST_TEXT = "UP_DATE_NEW_POST_TEXT"
 const SET_USER_PROFILE = "SET_USER_PROFILE"
 const SET_USER_STATUS = "SET_USER_STATUS"
 
@@ -51,8 +51,6 @@ let initialState = {
         {id: 5, message: "Sky limit", likesCount: "like 15"},
         {id: 6, message: "Sky limit", likesCount: "like 15"},
     ] as Array<PostType>,
-
-    newPostText: "I am superman",
     profile: null as UserProfileType | null,
     status: ""
 }
@@ -65,7 +63,7 @@ const profileReducer = (state: initialStateType = initialState,
         case ADD_POST_TEXT: {
             let newPost: PostDataType = {
                 id: 7,
-                message: state.newPostText,
+                message: action.addNewPost,
                 likesCount: "like 0"
             }
             return {
@@ -74,9 +72,9 @@ const profileReducer = (state: initialStateType = initialState,
                 newPostText: ""
             }
         }
-        case UP_DATE_NEW_POST_TEXT: {
-            return {...state, newPostText: action.newPostText}
-        }
+        /* case UP_DATE_NEW_POST_TEXT: {
+             return {...state, newPostText: action.newPostText}
+         }*/
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
@@ -87,12 +85,12 @@ const profileReducer = (state: initialStateType = initialState,
             return state
     }
 }
-export const addPostAC = (postText: string): AddPostTextActionType => {
-    return {type: ADD_POST_TEXT, updateNewPostText: postText}
+export const addPostAC = (addNewPost: string): AddPostTextActionType => {
+    return {type: ADD_POST_TEXT, addNewPost}
 }
-export const upDateNewPostTextAC = (text: string): UpdateNewPostTextActionType => {
+/*export const upDateNewPostTextAC = (text: string): UpdateNewPostTextActionType => {
     return {type: UP_DATE_NEW_POST_TEXT, newPostText: text}
-}
+}*/
 export const setUserProfileAC = (profile: UserProfileType | null): setUserProfileActionType => {
     return {type: SET_USER_PROFILE, profile}
 }

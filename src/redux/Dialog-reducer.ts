@@ -1,4 +1,4 @@
-import {ActionsTypes, AddMessageTextActionType} from "./Store";
+import {ActionsTypes, AddMessageTextActionType} from "./StoreTypes";
 
 const ADD_MESSAGE_TEXT = "ADD_MESSAGE_TEXT"
 

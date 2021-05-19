@@ -1,4 +1,4 @@
-import {ActionsTypes} from "./Store";
+import {ActionsTypes} from "./StoreTypes";
 
 let initialState = {}
 

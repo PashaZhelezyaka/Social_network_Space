@@ -12,7 +12,6 @@ type MapStatePropsType = {
 
 type mapDispatchPropsType = {
     addMessage: (newMessageText: string) => void
-    upDateNewMessageText: (text: string) => void
 }
 
 export type DialogType = MapStatePropsType & mapDispatchPropsType
