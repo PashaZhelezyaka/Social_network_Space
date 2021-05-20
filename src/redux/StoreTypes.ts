@@ -76,7 +76,7 @@ export type setUserStatusActionType = {
 }
 export type setUserAuthDataActionType = {
     type: "SET_USER_DATE"
-    data: DataDataType | null
+    payload: DataDataType | null
 
 }
 

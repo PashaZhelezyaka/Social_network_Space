@@ -1,6 +1,5 @@
 import axios from "axios";
-import {UserProfileType} from "../redux/Profile-reducer";
-import { authDataType } from "../redux/Auth-reducer";
+import {authDataType} from "../redux/Auth-reducer";
 
 const instanse = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
@@ -28,10 +27,6 @@ export const usersAPI = {
         ).then(response => {
             return response.data
         })
-    },
-    getProfile(userId: string) {
-        console.warn('Old method')
-        return profileAPI.getProfile(userId)
     }
 }
 
@@ -39,10 +34,10 @@ export const profileAPI = {
     getProfile(userId: string) {
         return instanse.get(`profile/${userId}`)
     },
-    getStatus (userId: string){
+    getStatus(userId: string) {
         return instanse.get(`/profile/status/${userId}`)
     },
-    updateStatus (status: string){
+    updateStatus(status: string) {
         return instanse.put(`/profile/status`, {status: status})
     }
 }
@@ -50,7 +45,14 @@ export const profileAPI = {
 export const authAPI = {
     me() {
         return instanse.get<authDataType>(`auth/me`)
+    },
+    login(email: string, password: string, rememberMe: boolean) {
+        return instanse.post(`/auth/login`, {email, password, rememberMe})
+    },
+    logout() {
+        return instanse.delete(`/auth/login`)
     }
+
 }
 
 

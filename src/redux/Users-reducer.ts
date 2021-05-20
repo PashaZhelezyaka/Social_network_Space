@@ -10,7 +10,7 @@ const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT"
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING"
 const FOLLOWING_IN_PROGRESS = "FOLLOWING_IN_PROGRESS"
 
-type LocationType = {
+type LocationType =  {
     city: string
     country: string
 }
@@ -22,7 +22,6 @@ export type UsersPropsType = {
     usersPage: initialStateType
     unfollow: (userID: number) => void
     follow: (userID: number) => void
-    // toggleFollowingProgress: (isFetching: boolean, userID: number) => void
     followingInProgress: Array<number>
 }
 export type PhotosType = {
