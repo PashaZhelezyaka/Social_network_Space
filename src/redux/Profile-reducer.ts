@@ -88,9 +88,7 @@ const profileReducer = (state: initialStateType = initialState,
 export const addPostAC = (addNewPost: string): AddPostTextActionType => {
     return {type: ADD_POST_TEXT, addNewPost}
 }
-/*export const upDateNewPostTextAC = (text: string): UpdateNewPostTextActionType => {
-    return {type: UP_DATE_NEW_POST_TEXT, newPostText: text}
-}*/
+
 export const setUserProfileAC = (profile: UserProfileType | null): setUserProfileActionType => {
     return {type: SET_USER_PROFILE, profile}
 }

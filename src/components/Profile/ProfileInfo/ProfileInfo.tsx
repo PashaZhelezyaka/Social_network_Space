@@ -8,7 +8,7 @@ import {StatusProfile} from './StatusProfile';
 type PropsType = {
     profile: UserProfileType
     status: string
-    updateStatus: (status:string)=>void
+    updateStatus: (status:string)=>string
 }
 
 export function ProfileInfo(props: PropsType) {

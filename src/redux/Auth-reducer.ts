@@ -4,6 +4,7 @@ import {
 } from "./StoreTypes";
 import {Dispatch} from "redux";
 import {authAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const SET_USER_DATE = "SET_USER_DATE"
 
@@ -66,6 +67,9 @@ export const LoginTC = (email: string, password: string, rememberMe: boolean = f
         authAPI.login(email, password, rememberMe).then((res) => {
             if (res.data.resultCode === 0) {
                 getAuthUserData()
+            } else {
+                let messages = res.data.messages.length > 0 ? res.data.messages[0] : "Error"
+                dispatch(stopSubmit("login", {_error: messages}))
             }
         })
     }
